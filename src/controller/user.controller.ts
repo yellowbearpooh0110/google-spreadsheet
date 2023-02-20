@@ -59,10 +59,10 @@ export const AuthenticateUser = (req: Request, res: Response) => {
 
   if (error) res.json({ validationError: error });
   else {
-    passport.authenticate("local", { session: false }, (err, user) => {
+    passport.authenticate("local", { session: false }, (err, user, args) => {
       if (err || !user)
         return res.status(400).json({
-          message: "Something is not right",
+          message: args.message || "Something is not right.",
           user,
         });
 
