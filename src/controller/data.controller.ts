@@ -19,11 +19,8 @@ export const GetAllData = (req: Request, res: Response) => {
     res.json({
       data: sheetData.filter(
         (item) =>
-          item["Info:"].toLowerCase().includes(search) ||
           item["Journalist's Name"].toLowerCase().includes(search) ||
-          item["Media Name"].toLowerCase().includes(search) ||
-          item["Search citations"].toLowerCase().includes(search) ||
-          item["To pitch?"].toLowerCase().includes(search)
+          item["Media Name"].toLowerCase().includes(search)
       ),
     });
   }
