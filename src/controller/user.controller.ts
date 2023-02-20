@@ -52,9 +52,7 @@ export const AuthenticateUser = (req: Request, res: Response) => {
     password: string;
   }>({
     name: Joi.string().min(1).required(),
-    password: Joi.string()
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .required(),
+    password: Joi.string().min(1).required(),
   });
 
   const { error } = schema.validate(req.body);
