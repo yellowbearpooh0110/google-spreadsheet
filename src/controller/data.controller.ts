@@ -9,13 +9,9 @@ export const GetAllData = (req: Request, res: Response) => {
     search: Joi.string(),
   });
 
-  const {
-    value: { search },
-    error,
-  } = schema.validate(req.query);
+  const { value, error } = schema.validate(req.query);
 
-  // tslint:disable-next-line:no-console
-  console.log(req.query);
+  const search = value.search.toLowerCase();
 
   if (error) res.json({ validationError: error });
   else {
@@ -23,11 +19,11 @@ export const GetAllData = (req: Request, res: Response) => {
     res.json({
       data: sheetData.filter(
         (item) =>
-          item["Info:"].includes(search) ||
-          item["Journalist's Name"].includes(search) ||
-          item["Media Name"].includes(search) ||
-          item["Search citations"].includes(search) ||
-          item["To pitch?"].includes(search)
+          item["Info:"].toLowerCase().includes(search) ||
+          item["Journalist's Name"].toLowerCase().includes(search) ||
+          item["Media Name"].toLowerCase().includes(search) ||
+          item["Search citations"].toLowerCase().includes(search) ||
+          item["To pitch?"].toLowerCase().includes(search)
       ),
     });
   }
