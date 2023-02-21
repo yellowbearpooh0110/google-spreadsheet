@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { sheetData } from "../data";
+import { sheetData, loadDoc } from "../data";
 
 export const GetAllData = (req: Request, res: Response) => {
   const schema = Joi.object<{
@@ -24,4 +24,14 @@ export const GetAllData = (req: Request, res: Response) => {
       ),
     });
   }
+};
+
+export const RefetchData = (req: Request, res: Response) => {
+  loadDoc()
+    .then(() => {
+      res.json({ success: true });
+    })
+    .catch((error) => {
+      res.json({ success: false, errorMessage: error });
+    });
 };

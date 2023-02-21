@@ -16,11 +16,11 @@ import api from "./api";
 import oauth from "./oauth";
 
 import "./passport";
-import "./data/load";
+import { loadDoc } from "./data";
 import initializeSocket from "./socket";
 
 const app = express();
-
+loadDoc();
 app.use(
   session({
     resave: false,

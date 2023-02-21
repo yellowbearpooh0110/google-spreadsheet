@@ -14,3 +14,4 @@ export type SheetDatumType = {
 
 export const sheetUsers: SheetUserType[] = [];
 export const sheetData: SheetDatumType[] = [];
+export { loadDoc } from "./load";
