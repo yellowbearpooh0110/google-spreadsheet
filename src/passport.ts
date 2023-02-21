@@ -90,7 +90,9 @@ passport.use(
     },
     async (jwtPayload, done) => {
       try {
-        const _user = UserSerivce.GetUserByName({ name: jwtPayload.name });
+        // tslint:disable-next-line:no-console
+        console.log(jwtPayload);
+        const _user = UserSerivce.GetUserByName({ name: jwtPayload.user });
         if (_user) {
           const { password, ...userWithoutPassword } = _user;
           done(null, userWithoutPassword);
