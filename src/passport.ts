@@ -90,7 +90,7 @@ passport.use(
     },
     async (jwtPayload, done) => {
       try {
-        const _user = UserSerivce.GetUserById({ id: jwtPayload.id });
+        const _user = UserSerivce.GetUserByName({ name: jwtPayload.name });
         if (_user) {
           const { password, ...userWithoutPassword } = _user;
           done(null, userWithoutPassword);
