@@ -11,7 +11,7 @@ export const GetAllData = (req: Request, res: Response) => {
 
   const { value, error } = schema.validate(req.query);
 
-  const search = value.search.trim().toLowerCase();
+  const search = value.search ? value.search.trim().toLowerCase() : "";
 
   if (error) res.json({ validationError: error });
   else {
